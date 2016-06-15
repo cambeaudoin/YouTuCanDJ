@@ -1,16 +1,114 @@
 <html>
 <head>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<style>
+    * { margin: 0; padding: 0; }
+
+body {
+    background-color: #00002d
+}
+
+.video-panels {
+    background-color: #ff8f35
+}
+
+/*$color1: #feff9e; //rgba(254, 255, 158, 100)
+$color2: #f9de70; //rgba(249, 222, 112, 100)
+$color3: #ff8f35; //rgba(255, 143, 53, 100)
+$color4: #ff3302; //rgba(255, 51, 2, 100)
+$color5: #00002d; //rgba(0, 0, 45, 100)*/
+</style>
 </head>
+
+
+
 <body>
 
+<div class="container">
+    <div class="col-sm-6 video-panels">
+        <div id="player"></div>
+    </div>
+    <div class="col-sm-6 video-panels">
+        <div id="player2"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 video-panels">Here goes the playlist</div>
+    <div class="col-sm-4"></div>
+</div>
 
 
 
 
 
-    
+
+
+
+<!--Scripts-->
+<script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+    //   var tag2 = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+    //   tag.id = "tag1"
+    //   tag2.src = "https://www.youtube.com/iframe_api";
+    //   tag2.id = "tag2"
+    //   console.log({tag1: tag, tag2: tag2})
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+    //   var secondScriptTag = document.getElementsByTagName('script')[1];
+        // var firstScriptTag = document.getElementById("tag1");
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    //   console.log(firstScriptTag, "firstScriptTag")
+    //   console.log(secondScriptTag, "secondScriptTag")
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      var player2;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '200',
+          width: '100%',
+          videoId: 'Zf31LvMcAXY',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+
+        player2 = new YT.Player('player2', {
+          height: '200',
+          width: '100%',
+          videoId: 'fk4BbF7B29w',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+</script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
->>>>>>> Stashed changes
