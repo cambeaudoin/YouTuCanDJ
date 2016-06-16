@@ -4,6 +4,7 @@
   "description": "The sweetest party youtube dj machine",
   "main": "controller.js",
   "dependencies": {
+    "angular-youtube-embed": "^1.2.0",
     "bower": "^1.7.9"
   },
   "devDependencies": {},
