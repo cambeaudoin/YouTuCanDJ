@@ -1,29 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="youtucandj" ng-controller="ytcdjCtrl">
 <head>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-<style>
-    * { margin: 0; padding: 0; }
-
-body {
-    background-color: #00002d
-}
-
-.video-panels {
-    background-color: #ff8f35
-}
-
-/*$color1: #feff9e; //rgba(254, 255, 158, 100)
-$color2: #f9de70; //rgba(249, 222, 112, 100)
-$color3: #ff8f35; //rgba(255, 143, 53, 100)
-$color4: #ff3302; //rgba(255, 51, 2, 100)
-$color5: #00002d; //rgba(0, 0, 45, 100)*/
-</style>
+<link href="styles.css" rel="stylesheet">
 </head>
 
 
 
 <body>
-
 <div class="container">
     <div class="col-sm-6 video-panels">
         <div id="player"></div>
@@ -34,19 +18,65 @@ $color5: #00002d; //rgba(0, 0, 45, 100)*/
 </div>
 <div class="container">
     <div class="col-sm-4"></div>
-    <div class="col-sm-4 video-panels">Here goes the playlist</div>
+    <div class="col-sm-4 video-panels">
+        <input type="text" ng-model="videoId">
+    </div>
     <div class="col-sm-4"></div>
 </div>
 
 
-
-
-
-
-
-
 <!--Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="controller.js"></script>
+<script ng-controller="ytcdjCtrl">
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    var player2;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+        height: '300',
+        width: '100%',
+        videoId: '{{videoId}}',
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+        });
+
+        player2 = new YT.Player('player2', {
+        height: '300',
+        width: '100%',
+        videoId: 'fk4BbF7B29w',
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+        });
+    }
+
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    var done = false;
+
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+        }
+    }
+
+    function stopVideo() {
+        player.stopVideo();
+    }
+</script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
