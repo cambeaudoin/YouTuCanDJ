@@ -1,12 +1,17 @@
-name: youtucandj
-version: 0.0.1
-description: Sweet party youtube app
-main file: index.html
-what types of modules does this package expose?: //leave empty
-keywords: //leave empty
-authors: Cam Beaudoin
-license: MIT
-homepage: //leave empty
-set currently installed components as dependencies?: Yes
-add commonly ignored files to ignore list?: Yes
-would you like to mark this package as private which prevents it from being accidentally published to the registry?: Yes
+{
+  "name": "youtucandj",
+  "description": "The sweetest party youtube dj machine",
+  "main": "controller.js",
+  "authors": [
+    "Cam Beaudoin"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cambeaudoin/YouTuCanDJ",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
