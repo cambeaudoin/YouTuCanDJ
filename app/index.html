@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>YouTu Can DJ</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+
+<body ng-app="youtucandj" ng-controller="ytcdjCtrl">
+    <!--[if lt IE 9]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+        <div class="col-sm-6 video-panels">
+            <youtube-video player-width="'100%'" player-height="'300px'" video-id="theBestVideo"></youtube-video>
+        </div>
+        <div class="col-sm-6 video-panels">
+            <youtube-video player-width="'100%'" player-height="'300px'" video-id="videoId"></youtube-video>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-12 video-panels">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" ng-model="video.addToQueue" class="form-control">
+                    <a class="btn btn-default" ng-click="pushNextVideo(video.addToQueue)" href="#" role="button">Add</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 video-panels">
+            Queue:<br>
+            <ul>
+                <li ng-repeat="video in videoQueue">{{video}}</li>
+            </ul>
+        </div>
+        <div class="col-sm-6"></div>
+    </div>
+
+
+<!--Scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script src="../node_modules/angular-youtube-embed/src/angular-youtube-embed.js"></script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/controller.js"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>

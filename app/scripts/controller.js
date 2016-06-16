@@ -1,7 +1,5 @@
 "use strict";
 
-var app = angular.module('youtucandj', ['youtube-embed']);
-
 app.controller('ytcdjCtrl', ['$scope', function($scope) {
 
 $scope.videoId = "xuyCdgpa5sY"
